@@ -1,10 +1,34 @@
-// const Footer = () => import('@/components/footer.vue');
-import Footer from '@/components/footer.vue';
-// const Footer = r => require.ensure([], () => r(require('_components/footer.vue')), 'footer');
+const Footer = () => import('@/components/footer.vue');
+const CreateTask = () => import('@/pages/createTask.vue');
+const SetTime = () => import('@/pages/setTime.vue');
+const TaskChart = () => import('@/pages/taskChart.vue');
+const TaskList = () => import('@/pages/taskList.vue');
 
 export default [
     {
         path: '/',
-        component: Footer
+        redirect: 'taskList',
+        components: {
+            'default': TaskList,
+            'footer': Footer
+        },
+        children: [
+            {
+                path: 'createTask',
+                component: CreateTask
+            },
+            {
+                path: 'setTime',
+                component: SetTime
+            },
+            {
+                path: 'taskChart',
+                component: TaskChart
+            },
+            {
+                path: 'taskList',
+                component: TaskList
+            },
+        ]
     }
 ];

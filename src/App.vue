@@ -16,7 +16,10 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+@import 'node_modules/bootstrap/scss/bootstrap';
+@import 'node_modules/bootstrap-vue/src/index.scss';
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

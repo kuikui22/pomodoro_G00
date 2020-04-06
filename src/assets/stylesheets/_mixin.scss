@@ -3,3 +3,27 @@
     -webkit-border-radius: $num;
     border-radius: $num;
 }
+
+@mixin action-btn {
+    @include border-radius(50pt);
+
+    position: absolute;
+    left: 50%;
+    width: 75pt;
+    transform: translateX(-50%);
+    font-size: 18pt;
+    line-height: 18pt;
+    background-color: $main-bg-color;
+}
+
+@mixin placeholder($color) {
+    ::placeholder {
+        color: $color;
+    }
+    :-ms-input-placeholder {
+        color: $color;
+    }
+    ::-ms-input-placeholder {
+        color: $color;
+    }
+}

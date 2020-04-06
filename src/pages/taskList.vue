@@ -164,16 +164,9 @@ export default {
 
     }
     .add-btn {
-        @include border-radius(50pt);
+        @include action-btn;
 
-        position: absolute;
         bottom: 3pt;
-        left: 50%;
-        width: 75pt;
-        transform: translateX(-50%);
-        font-size: 18pt;
-        line-height: 18pt;
-        background-color: $main-bg-color;
     }
     .arrow-btn {
         position: absolute;

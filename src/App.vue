@@ -2,15 +2,17 @@
   <div id="app">
     <router-view></router-view>
     <router-view name="footer"></router-view>
+    <times-up></times-up>
   </div>
 </template>
 
 <script>
+import timesUp from '@/components/timesUp.vue';
 
 export default {
   name: 'App',
   components: {
-    // HelloWorld
+    timesUp
   }
 }
 </script>

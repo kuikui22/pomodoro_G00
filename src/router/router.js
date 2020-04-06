@@ -1,4 +1,5 @@
 const Footer = () => import('@/components/footer.vue');
+const Main = () => import('@/components/main.vue');
 const CreateTask = () => import('@/pages/createTask.vue');
 const SetTime = () => import('@/pages/setTime.vue');
 const TaskChart = () => import('@/pages/taskChart.vue');
@@ -9,26 +10,38 @@ export default [
         path: '/',
         redirect: 'taskList',
         components: {
-            'default': TaskList,
+            'default': Main,
             'footer': Footer
         },
         children: [
             {
-                path: 'createTask',
-                component: CreateTask
+                path: '/createTask',
+                component: CreateTask,
+                name: 'createTask',
+                meta: {title: 'Create Task'}
             },
             {
-                path: 'setTime',
-                component: SetTime
+                path: '/setTime',
+                component: SetTime,
+                name: 'setTime',
+                meta: {title: 'Set Time'}
             },
             {
-                path: 'taskChart',
-                component: TaskChart
+                path: '/taskChart',
+                component: TaskChart,
+                name: 'taskChart',
+                meta: {title: 'Task Chart'}
             },
             {
-                path: 'taskList',
-                component: TaskList
+                path: '/taskList',
+                component: TaskList,
+                name: 'taskList',
+                meta: {title: 'Task'}
             },
         ]
-    }
+    },
+    {
+        path: '/setTime',
+        component: SetTime
+    },
 ];

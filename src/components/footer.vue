@@ -26,8 +26,8 @@ export default {
         width: 100%;
         padding: 12px 5px;
         color: #fff;
-        background-color: rgba(0,129,185,1.00);
-        background-image: linear-gradient(0deg,rgba(255,255,255,0.00) 0%,rgba(20,168,59,1.00) 100%);
+        background-color: $main-bg-color;
+        background-image: $main-bg-img;
 
         span {
             display: inline-block;

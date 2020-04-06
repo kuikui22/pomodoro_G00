@@ -12,7 +12,7 @@
                 </b-nav-item>
             </b-nav>
         </div>
-        <div>
+        <div class="content">
             <div class="card" v-for="(item, key) in taskList" :key="key">
                 <div class="card-body">
                     <b-icon-check-circle></b-icon-check-circle>
@@ -69,9 +69,14 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/stylesheets/styles.scss';
     #main {
-        overflow-x: hidden;
-        overflow-y: auto;
-        height: 100vh;
+        overflow: hidden;
+
+        .content {
+            width: 100%;
+            height: 58vh;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
     }
     section {
         position: relative;
@@ -159,7 +164,7 @@ export default {
         @include border-radius(50pt);
 
         position: absolute;
-        bottom: 70px;
+        bottom: 50pt;
         left: 50%;
         width: 75pt;
         transform: translateX(-50%);

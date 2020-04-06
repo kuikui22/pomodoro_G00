@@ -1,17 +1,23 @@
 <template>
-    <div id="main">
+    <div id="main" v-show="showTimesUp">
         <section>
-
+            <img :src="iconUrl" />
             <p>{{ title }}</p>
         </section>
     </div>
 </template>
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
     data() {
         return {
-            title: 'Times Up!'
+            title: 'Times Up!',
+            iconUrl: require('@/assets/images/btn_menu.png')
         }
+    },
+    computed: {
+        ...mapGetters(['showTimesUp'])
     }
 }
 </script>
@@ -28,10 +34,12 @@ export default {
         z-index: $top-zIndex;
         color: #fff;
         font-weight: bolder;
-        font-size: 14pt;
+        font-size: 12pt;
 
         section {
             position: relative;
+            top: 50%;
+            transform: translateY(-50%);
         }
     }
 </style>

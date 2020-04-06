@@ -3,6 +3,7 @@ import App from './App.vue';
 import VueRouter from 'vue-router';
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
 import routes from '@/router/router.js';
+import store from '@/store/store.js';
 
 Vue.config.productionTip = false;
 
@@ -19,5 +20,6 @@ const router = new VueRouter({
 
 new Vue({
   router,
+  store,
   render: h => h(App),
 }).$mount('#app');

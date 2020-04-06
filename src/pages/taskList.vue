@@ -23,9 +23,9 @@
                 </div>
             </div>
         </div>
-        <button class="btn btn-success add-btn">
+        <router-link tag="button" to="createTask" class="btn btn-success add-btn">
             <b-icon-plus></b-icon-plus>
-        </button>
+        </router-link>
     </div>
 </template>
 <script>
@@ -70,12 +70,15 @@ export default {
 @import '@/assets/stylesheets/styles.scss';
     #main {
         overflow: hidden;
+        position: relative;
 
         .content {
             width: 100%;
             height: 58vh;
             overflow-x: hidden;
             overflow-y: auto;
+            padding-bottom: 20pt;
+            padding-top: 8pt;
         }
     }
     section {
@@ -92,7 +95,7 @@ export default {
         overflow-x: auto;
         overflow-y: hidden;
         padding-top: 10px ;
-        padding-bottom: 20px ;
+        padding-bottom: 15px ;
 
         ul {
             width: 100%;
@@ -164,7 +167,7 @@ export default {
         @include border-radius(50pt);
 
         position: absolute;
-        bottom: 50pt;
+        bottom: 3pt;
         left: 50%;
         width: 75pt;
         transform: translateX(-50%);

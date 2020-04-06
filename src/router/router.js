@@ -39,9 +39,5 @@ export default [
                 meta: {title: 'Task'}
             },
         ]
-    },
-    {
-        path: '/setTime',
-        component: SetTime
-    },
+    }
 ];

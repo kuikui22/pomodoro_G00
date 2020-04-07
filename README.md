@@ -39,6 +39,11 @@
 參見網址: https://v-charts.js.org/#/start
 
 
+# <font color="#ff0000"> TODO </font>
+* 鈴聲提示
+* 倒數計時動畫
+* 倒數計時頁面
+
 
 ## Project setup
 ```

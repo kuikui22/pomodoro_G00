@@ -77,6 +77,7 @@ section {
     box-shadow: 0rem 0.05rem 0.5rem 0.1rem rgba(0, 0, 0, 0.10);
 }
 .card-body {
+    position: relative;
     padding: .8rem;
     text-align: left;
     font-size: 12pt;
@@ -92,9 +93,36 @@ section {
         display: inline-block;
         color: #6F6F6F;
         padding-left: 20px;
+        vertical-align: middle;
+    }    
+    .finish-check {
+        @include border-radius(50%);
+
+        width: 20pt;
+        height: 20pt;
+        padding-left: 0px;
+        border: 1px solid #7C7C7C6F;
+    }  
+    
+    &.finish {
+        .finish-check {
+            border-color: $titleColor;
+
+            svg {
+                color: $titleColor;
+            }
+        }
+        .task-name {
+            color: #DEDEDE;
+        }
     }
 
+
 }
+.task-name {
+    max-width: 80%;
+}
+
 .add-btn {
     @include action-btn;
 
@@ -102,7 +130,9 @@ section {
 }
 .arrow-btn {
     position: absolute;
-    right: 5pt;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 5pt;    
     
     svg {
         color: #8acf9c;

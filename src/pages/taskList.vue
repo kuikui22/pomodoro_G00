@@ -5,7 +5,7 @@
             <span>{{ month }}</span>
         </section>
         <div class="main-nav">
-            <b-nav fill  align="center">                
+            <b-nav fill align="center">                
                 <b-nav-item v-for="(item, key) in monthList" :key="key">
                     <span class="title-week">{{ item.week }}</span>
                     <span class="title-date">{{ item.date }}</span>
@@ -14,9 +14,11 @@
         </div>
         <div class="content">
             <div class="card" v-for="(item, key) in taskList" :key="key">
-                <div class="card-body">
-                    <b-icon-check-circle></b-icon-check-circle>
-                    <span>{{ item.name }}</span>
+                <div class="card-body" :class="{'finish':item.finish}" @click="showDelete">
+                    <span class="finish-check">
+                        <b-icon-check v-show="item.finish"></b-icon-check>
+                    </span>
+                    <span class="task-name">{{ item.name }}</span>
                     <span class="arrow-btn">
                         <b-icon-play-fill></b-icon-play-fill>
                     </span>
@@ -29,17 +31,25 @@
     </div>
 </template>
 <script>
+import { getMonth_En } from '@/services/extraFun.js';
+import { mapGetters } from 'vuex';
+
 export default {
     data() {
         return {
             title: 'Task',
-            month: 'May',
-            monthList: [],
-            taskList: []
+            month: '',
+            monthList: []
         }
+    },
+    computed: {
+        ...mapGetters(['taskList'])
     },
     methods: {
         getMonth() {
+            this.month = getMonth_En(new Date().getMonth())
+        },
+        getWeeks() {
             this.monthList = [
                 { week: 'S', date:'18' },
                 { week: 'M', date:'19' },
@@ -50,19 +60,13 @@ export default {
                 { week: 'S', date:'24' },
             ];
         },
-        getTask() {
-            this.taskList = [
-                { finish: true, name: 'Work on Project A' },
-                { finish: false, name: 'Work on Project B' },
-                { finish: false, name: 'Work on Project C' },
-                { finish: false, name: 'Work on Project D' },
-                { finish: false, name: 'Work on Project E' },
-            ];
+        showDelete() {
+            console.log('顯示刪除按鈕');
         }
     },
     created() {
         this.getMonth();
-        this.getTask();
+        this.getWeeks();
     }
 }
 </script>

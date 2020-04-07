@@ -41,27 +41,5 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import '@/assets/stylesheets/styles.scss';
-
-    #main {
-        @include placeholder(#666);
-
-        overflow: hidden;
-        position: relative;
-        height: 100%;
-
-        .form-control,
-        .custom-select {
-            border: 0;
-            font-size: 15pt;
-            font-weight: bold;
-            background-color: #f5f5f5;
-        }        
-    }
-    .add-btn {
-        @include action-btn;
-
-        font-size: 15pt;
-        bottom: 5pt;
-    }
+    @import '@/assets/stylesheets/page/createTask.scss';
 </style>

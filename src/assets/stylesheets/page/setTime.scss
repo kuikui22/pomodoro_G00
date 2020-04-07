@@ -1,0 +1,47 @@
+@import '@/assets/stylesheets/styles.scss';
+
+main {
+    // padding: 0px !important;
+    // background-color: black;
+    // background: url('~@/assets/images/trans-am.png') no-repeat center;
+    // background-size: 100% 85%;
+}
+#main {
+    position: relative;
+}
+.timer {
+    @include border-radius(50%);
+    
+    position: relative;
+    left: 50%;        
+    transform: translateX(-50%);
+    border: 1px solid;
+    width: 150pt;
+    height: 150pt;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    p {
+        font-size: 20pt;
+    }
+}    
+.block__btns {
+
+    button {
+        @include border-radius(50%);
+
+        height: 35pt;
+        width: 35pt;
+        box-shadow: 0rem 0.05rem 0.5rem 0.1rem rgba(0, 0, 0, 0.10);
+        text-align: center;
+        line-height: 100%;
+        color: #b7b7b7;
+        font-weight: bold;
+    }
+    .status-btn {
+        @include border-radius(40pt);
+
+        width: 60pt;
+    }
+}

@@ -1,3 +1,5 @@
+# gundam_pomodoro
+
 ## Directory Struct
 ```
 .
@@ -33,8 +35,10 @@
 .
 ```
 
+## v-charts
+參見網址: https://v-charts.js.org/#/start
 
-# gundam_pomodoro
+
 
 ## Project setup
 ```

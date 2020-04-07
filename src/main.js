@@ -4,11 +4,17 @@ import VueRouter from 'vue-router';
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
 import routes from '@/router/router.js';
 import store from '@/store/store.js';
+import VCharts from 'v-charts';
+// import { Bar } from 'v-charts/lib/line.common';
 
 Vue.config.productionTip = false;
 
+//use bootstrap
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
+
+Vue.use(VCharts);
+// Vue.component('v-charts-bar', Bar);
 
 //use vue-router
 Vue.use(VueRouter);

@@ -20,8 +20,8 @@
         <section class="mt-2">
             <h5>{{ chartTitle }}</h5>
             <div class="chart-tag">
-                <span class="mr-2">Today</span>
-                <span class="active">Weekly</span>
+                <span class="mr-2" @click="getChartToday">Today</span>
+                <span class="active" @click="getChartWeek">Weekly</span>
             </div>
             <ve-histogram 
                 :data="chartData"
@@ -33,9 +33,12 @@
     </div>
 </template>
 <script>
+import { CHART_TAG } from '@/services/const.js';
+
 export default {
     data() {
         return {
+            TAG: CHART_TAG,
             titleContent: 'You completed your goal 4 days a row !',
             todayTitle: "Today's Task",
             weeklyTitle: 'Weekly Task',
@@ -43,7 +46,8 @@ export default {
             todayFinish: 25,
             weeklyTask: 30,
             weeklyFinish: 30,
-            chartTitle: 'Completed Task',
+            chartTag: CHART_TAG.WEEK,
+            chartTitle: 'Completed Task',         
             chartData: {},
             chartLabelColor: {
                 color: '#b7b7b7'
@@ -51,7 +55,8 @@ export default {
         }
     },
     methods: {
-        getChartData() {
+        getChartWeek() {
+            this.chartTag = this.TAG.WEEK;
             this.chartData = {
                 columns: ['date', 'task'],
                 rows: [
@@ -63,10 +68,23 @@ export default {
                     { 'date': '1/6', 'task': 20 }
                 ]
             };
+        },
+        getChartToday() {
+            this.chartTag = this.TAG.TODAY;
+            this.chartData = {
+                columns: ['date', 'task'],
+                rows: [
+                    { 'date': '1/1', 'task': 10 }
+                ]
+            };
+        },
+        changeTagClass(tag_Id) {
+            //TODO: 依據id 設定active啟用
+            console.log(tag_Id);
         }
     },
     created() {
-        this.getChartData();
+        this.getChartWeek();
     }
 }
 </script>

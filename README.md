@@ -37,6 +37,8 @@
 
 ## v-charts
 參見網址: https://v-charts.js.org/#/start
+Github: https://github.com/apertureless/vue-chartjs
+echarts文檔: https://www.echartsjs.com/zh/option.html#textStyle.color
 
 
 # <font color="#ff0000"> TODO </font>

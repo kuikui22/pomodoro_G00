@@ -27,6 +27,7 @@
                 :data="chartData"
                 :tooltip-visible="false"
                 :legend-visible="false"
+                :textStyle="chartLabelColor"
             ></ve-histogram>
         </section>
     </div>
@@ -43,7 +44,10 @@ export default {
             weeklyTask: 30,
             weeklyFinish: 30,
             chartTitle: 'Completed Task',
-            chartData: {}
+            chartData: {},
+            chartLabelColor: {
+                color: '#b7b7b7'
+            }
         }
     },
     methods: {

@@ -30,6 +30,7 @@ export default {
             clearInterval(state.timer);
             state.timer = null;
             state.cutdown = 0;
+            state.showTimesUp = true;
         }
     },
     TIME_STOP(state) {

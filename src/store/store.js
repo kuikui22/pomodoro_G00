@@ -9,7 +9,7 @@ const state = {
 	showTimesUp: false,
 	timer: null,
 	defaultTime: DEFAULT_TIME,
-	cutdown: DEFAULT_TIME,
+	cutdown: 0,
 	firstCutDown: true,
 	taskList: [
 		{ finish: true, name: 'Work on Project A', date: new Date(), priority: 'normal'},

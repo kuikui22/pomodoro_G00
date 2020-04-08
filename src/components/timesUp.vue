@@ -1,10 +1,12 @@
 <template>
-    <div id="main" v-show="showTimesUp">
-        <section>
-            <img :src="iconUrl" />
-            <p>{{ title }}</p>
-        </section>
-    </div>
+    <transition tag="div" name="time__up">
+        <div id="main" v-show="showTimesUp" @click.self="close">
+            <section>
+                <img :src="iconUrl" />
+                <p>{{ title }}</p>
+            </section>
+        </div>
+    </transition>
 </template>
 <script>
 import { mapGetters } from 'vuex';
@@ -18,6 +20,11 @@ export default {
     },
     computed: {
         ...mapGetters(['showTimesUp'])
+    },
+    methods: {
+        close() {
+            this.$store.commit('SHOW_TIMES_UP', false);
+        }
     }
 }
 </script>
@@ -41,5 +48,13 @@ export default {
             top: 50%;
             transform: translateY(-50%);
         }
+    }
+    .time__up-enter,
+    .time__up-leave-to {
+        opacity: 0;
+    }
+    .time__up-enter-active,
+    .time__up-leave-active {
+        transition: all .5s ease;
     }
 </style>

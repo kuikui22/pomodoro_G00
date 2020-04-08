@@ -1,6 +1,8 @@
 @import '@/assets/stylesheets/styles.scss';
 
 #main {
+    @include id_mainClass;
+
     overflow: hidden;
     position: relative;
 
@@ -146,7 +148,7 @@ section {
 .add-btn {
     @include action-btn;
 
-    bottom: 3pt;
+    bottom: 13%;
 }
 .arrow-btn {
     position: absolute;

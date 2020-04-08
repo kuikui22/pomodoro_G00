@@ -2,7 +2,9 @@
 
 #main {
     @include placeholder(#666);
+    @include id_mainClass;
 
+    padding: 20px 20px 60px 20px;
     overflow: hidden;
     position: relative;
     height: 100%;
@@ -19,5 +21,5 @@
     @include action-btn;
 
     font-size: 15pt;
-    bottom: 5pt;
+    bottom: 15%;
 }

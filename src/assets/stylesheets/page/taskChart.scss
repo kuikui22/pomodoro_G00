@@ -12,6 +12,7 @@ article {
     font-weight: bold;
 }
 #main {
+    @include id_mainClass;
 
     .block {
         text-align: left;

@@ -6,6 +6,8 @@ Vue.use(Vuex);
 
 const state = {
 	showTimesUp: false,
+	timer: null,
+	cutdown: 0,
 	taskList: [
 		{ finish: true, name: 'Work on Project A', date: new Date(), priority: 'normal'},
 		{ finish: false, name: 'Work on Project B', date: new Date(), priority: 'normal' },
@@ -17,15 +19,29 @@ const state = {
 
 const getters = {
 	showTimesUp: state => state.showTimesUp,
-	taskList: state => state.taskList
+	taskList: state => state.taskList,
+	cutdown: state => state.cutdown,
+	hasTimer: state => (state.timer) ? true : false
 };  //state.[value] 取出 (類computed)
 
-// const actions = {};  //state.[value] 更改 (異步改值)
+const actions = {
+	TIME_START: ({ commit, state}) => {
+		
+		if(state.timer) {
+			return
+		}
+		
+		commit('SET_INTERVAL', setInterval(() => {
+				commit('TIME_START');
+			},1000)
+		);
+	}
+};  //state.[value] 更改 (異步改值)
 
 export default new Vuex.Store({
 	strict: process.env.NODE_ENV !== 'production', //build關閉嚴格模式
 	state,
 	getters,
-	// actions,
+	actions,
 	mutations
 })

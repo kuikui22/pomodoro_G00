@@ -1,13 +1,16 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import mutations from './mutations.js';
+import { DEFAULT_TIME } from '@/services/const.js';
 
 Vue.use(Vuex);
 
 const state = {
 	showTimesUp: false,
 	timer: null,
-	cutdown: 0,
+	defaultTime: DEFAULT_TIME,
+	cutdown: DEFAULT_TIME,
+	firstCutDown: true,
 	taskList: [
 		{ finish: true, name: 'Work on Project A', date: new Date(), priority: 'normal'},
 		{ finish: false, name: 'Work on Project B', date: new Date(), priority: 'normal' },
@@ -21,7 +24,8 @@ const getters = {
 	showTimesUp: state => state.showTimesUp,
 	taskList: state => state.taskList,
 	cutdown: state => state.cutdown,
-	hasTimer: state => (state.timer) ? true : false
+	hasTimer: state => (state.timer) ? true : false,
+	firstCutDown: state => state.firstCutDown
 };  //state.[value] 取出 (類computed)
 
 const actions = {
@@ -30,7 +34,7 @@ const actions = {
 		if(state.timer) {
 			return
 		}
-		
+
 		commit('SET_INTERVAL', setInterval(() => {
 				commit('TIME_START');
 			},1000)

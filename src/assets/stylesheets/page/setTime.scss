@@ -1,11 +1,5 @@
 @import '@/assets/stylesheets/styles.scss';
 
-main {
-    padding: 0px !important;
-    // background-color: black;
-    // background: url('~@/assets/images/trans-am1.png') no-repeat center;
-    // background-size: 100%;
-}
 #main {
     position: relative;
 }
@@ -27,6 +21,7 @@ main {
     align-items: center;
     
     p {
+        // padding-top: 40pt;
         font-size: 20pt;
     }
 }    

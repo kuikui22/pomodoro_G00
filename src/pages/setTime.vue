@@ -4,7 +4,6 @@
             <h3>{{ title }}</h3>
         </section>
         <div class="timer__box">
-            <!-- <p>25:00</p> -->
             <p>{{ cutdown | minuteTime }}</p>
         </div>
         <div class="block__reps my-3">
@@ -21,7 +20,7 @@
                 <button class="btn status-btn" v-show="hasTimer" @click="stopTime">Pause</button>
             </b-col>
             <b-col>
-                <button class="btn">
+                <button class="btn" @click="clearTime">
                     <b-icon-x></b-icon-x>
                 </button>
             </b-col>
@@ -30,6 +29,7 @@
 </template>
 <script>
 import { mapGetters, mapActions } from 'vuex';
+import { DEFAULT_TIME } from '@/services/const.js';
 
 export default {
     data() {
@@ -48,8 +48,8 @@ export default {
             let min = Math.floor(seconds / 60);
             let sec = Math.floor(seconds % 60);
 
-            min = (min.toString().length < 2) ? '0'+min: min;
-            sec = (sec.toString().length < 2) ? '0'+sec: sec;
+            min = (min.toString().length < 2) ? '0'+min : min;
+            sec = (sec.toString().length < 2) ? '0'+sec : sec;
 
             return min + ':' + sec;
         }
@@ -66,7 +66,10 @@ export default {
             this.$store.commit('TIME_STOP');
         },
         resetTime() {
-            this.$store.commit('TIME_RESET');
+            this.$store.commit('TIME_RESET', DEFAULT_TIME);
+        },
+        clearTime() {
+            this.$store.commit('TIME_CLEAR');
         }
     }
 }

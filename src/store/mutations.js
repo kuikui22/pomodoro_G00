@@ -14,15 +14,18 @@ export default {
     },
     SET_INTERVAL(state, intervalFunc) {
         state.timer = intervalFunc;
+        state.firstCutDown = true;
     },
     TIME_START(state, time) {
         
         if(state.cutdown <= 0) {
             state.cutdown = time;
         }
-
-        if(state.cutdown > 0) {
-            state.cutdown -= 1; 
+        
+        if(state.cutdown > 0 && state.firstCutDown === true) {
+            state.firstCutDown = false;
+        }else if(state.cutdown > 0) {
+            state.cutdown -= 1;
         }else {
             clearInterval(state.timer);
             state.timer = null;
@@ -33,7 +36,12 @@ export default {
         clearInterval(state.timer);
         state.timer = null;
     },
-    TIME_RESET(state) {
+    TIME_RESET(state, time) {
+        clearInterval(state.timer);
+        state.timer = null;
+        state.cutdown = time;
+    },
+    TIME_CLEAR(state) {
         clearInterval(state.timer);
         state.timer = null;
         state.cutdown = 0;

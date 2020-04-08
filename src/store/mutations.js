@@ -7,5 +7,9 @@ export default {
     },
     CHANGE_STATUS_TASK(state, id) {
         state.taskList[id].finish = !state.taskList[id].finish;
+    },
+    ADD_TASK(state, task) {
+        state.taskList.push(task);
+        console.log(state.taskList);
     }
 }

@@ -1,26 +1,26 @@
 const DAY_SHORT_NAME = {
-    1: 'M',
-    2: 'T',
-    3: 'W',
-    4: 'T',
-    5: 'F',
+    0: 'M',
+    1: 'T',
+    2: 'W',
+    3: 'T',
+    4: 'F',
+    5: 'S',
     6: 'S',
-    7: 'S',
 }
 
 const MONTH_SHORT_NAME = {
-    1: 'Jan',
-    2: 'Feb',
-    3: 'Mar',
-    4: 'Apr',
-    5: 'May',
-    6: 'Jun',
-    7: 'Jul',
-    8: 'Aug',
-    9: 'Sep',
-    10: 'Oct',
-    11: 'Nov',
-    12: 'Dec'
+    0: 'Jan',
+    1: 'Feb',
+    2: 'Mar',
+    3: 'Apr',
+    4: 'May',
+    5: 'Jun',
+    6: 'Jul',
+    7: 'Aug',
+    8: 'Sep',
+    9: 'Oct',
+    10: 'Nov',
+    11: 'Dec'
 }
 
 /**

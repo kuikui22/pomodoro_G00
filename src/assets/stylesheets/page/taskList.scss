@@ -40,7 +40,7 @@ section {
         span {
             display: block;
         }
-        .active {
+        &.active {
             .title-date {
                 color: $titleColor;
             }
@@ -75,6 +75,7 @@ section {
     margin: 0pt 3pt 10pt 3pt;
     border: 0;
     box-shadow: 0rem 0.05rem 0.5rem 0.1rem rgba(0, 0, 0, 0.10);
+    transition: transform .5s ease;
 }
 .card-body {
     position: relative;
@@ -117,12 +118,31 @@ section {
         }
     }
 
-
+}
+.task-moving {
+    transform: translateX(-20%);
 }
 .task-name {
     max-width: 80%;
 }
+.task__btn-del {
+    @include border-radius(50%);
 
+    position: absolute;
+    right: -50px;
+    padding-left: 0px !important;
+    top: 50%;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;    
+    transform: translateY(-50%);
+    background-color: #8acf9c;
+
+    svg {
+        color: #fff !important;
+    }
+}
 .add-btn {
     @include action-btn;
 
@@ -137,4 +157,17 @@ section {
     svg {
         color: #8acf9c;
     }
+}
+.task-list-item {
+    transition: all .5s ease;
+}
+.task-list-enter,
+.task-list-leave-to {
+    opacity: 0;
+    transform: translateY(100px);
+}
+.task-list-leave-active {
+    width: 100%;
+    position: absolute;
+    z-index: 2;
 }

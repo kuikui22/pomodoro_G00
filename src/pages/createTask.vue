@@ -13,10 +13,12 @@
         <button to="setTime" class="btn btn-success add-btn" @click="addTask">
             Done
         </button>
+        <alertTipBox :msg="errMsg" :showBox="showMsg"></alertTipBox>
     </div>
 </template>
 <script>
 import { mapGetters } from 'vuex';
+import alertTipBox from '@/components/alertTipBox.vue';
 
 export default {
     data() {
@@ -25,6 +27,8 @@ export default {
             taskTitle: '',
             taskContent: '',
             date: '',
+            errMsg: '',
+            showMsg: false,
             selected: 'normal',
             priorityList: [
                 { value: 'normal', text: 'normal'},
@@ -32,14 +36,25 @@ export default {
             ]
         }
     },
+    computed: {
+        ...mapGetters(['taskList'])
+    },
+    components: {
+        alertTipBox
+    },
     methods: {
-        ...mapGetters(['taskList']),
-
+        
         /**
          * 新增任務
-         * @todo 需阻擋空值, 空值時跳提示
          */
         addTask() {
+            if(!this.validVal()) {
+                this.alertMsg(true);
+                return;
+            } else {
+                this.alertMsg(false);
+            }
+
             let task = {
                 id: this.taskList.length,
                 finish: false,
@@ -50,6 +65,30 @@ export default {
 
             this.$store.commit('ADD_TASK', task);
             this.$router.push('/setTime');
+        },
+
+        /**
+         * 檢測值是否合法
+         */
+        validVal() {
+            if(this.taskTitle) {
+                return true;
+            }
+
+            return false;
+        },
+
+        /**
+         * 顯示提示框
+         */
+        alertMsg(show) {
+            if(show) {
+                this.errMsg = '請輸入任務名!';
+                this.showMsg = true;
+            } else {
+                this.errMsg = '';
+                this.showMsg = false;
+            }            
         }
     }
 }

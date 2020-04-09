@@ -7,21 +7,21 @@
             <b-col class="block" cols="6">
                 <small>{{ todayTitle }}</small>
                 <p>
-                    <span class="finish-font">{{ todayFinish }}</span> / {{ todayTask }}
+                    <span class="finish-font">{{ completedTodayList.length }}</span> / {{ todayTaskList.length }}
                 </p>
             </b-col>
             <b-col class="block" cols="6">
                 <small>{{ weeklyTitle }}</small>
                 <p>
-                    <span class="finish-font">{{ weeklyFinish }}</span> / {{ weeklyTask }}
+                    <span class="finish-font">{{ completedTaskList.length }}</span> / {{ taskList.length }}
                 </p>
             </b-col>
         </b-row>
         <section class="mt-2">
             <h5>{{ chartTitle }}</h5>
             <div class="chart-tag">
-                <span class="mr-2" @click="getChartToday">Today</span>
-                <span class="active" @click="getChartWeek">Weekly</span>
+                <span class="mr-2" :class="activeTagClass(TAG.TODAY)" @click="getChartToday">Today</span>
+                <span :class="activeTagClass(TAG.WEEK)" @click="getChartWeek">Weekly</span>
             </div>
             <ve-histogram 
                 :data="chartData"
@@ -34,6 +34,8 @@
 </template>
 <script>
 import { CHART_TAG } from '@/services/const.js';
+import { mapGetters } from 'vuex';
+import { parseDate, getWeekDate } from '@/services/extraFun.js';
 
 export default {
     data() {
@@ -42,10 +44,6 @@ export default {
             titleContent: 'You completed your goal 4 days a row !',
             todayTitle: "Today's Task",
             weeklyTitle: 'Weekly Task',
-            todayTask: 25,
-            todayFinish: 25,
-            weeklyTask: 30,
-            weeklyFinish: 30,
             chartTag: CHART_TAG.WEEK,
             chartTitle: 'Completed Task',         
             chartData: {},
@@ -54,34 +52,82 @@ export default {
             }
         }
     },
+    computed: {
+        ...mapGetters(['taskList']),
+        todayTaskList() {
+            let date = parseDate(new Date());
+            
+            return this.taskList.filter(task => date === task.date);
+        },
+        completedTaskList() {
+            return this.taskList.filter(task => task.finish === true);
+        },
+        completedTodayList() {
+            return this.todayTaskList.filter(task => task.finish === true);
+        }
+    },
     methods: {
         getChartWeek() {
             this.chartTag = this.TAG.WEEK;
+            let weekList = getWeekDate(new Date());
+            let dataGroup = weekList.map(date => {
+                let newDate = this.makeChartData(date);
+
+                return {
+                    'dateInt': date,
+                    'date': newDate,
+                    'task': 0
+                };
+            });
+
+            //計算同日期下完成的任務數量
+            this.completedTaskList.forEach(task => {
+                dataGroup.forEach(data => {
+                    if(data.dateInt === task.date) {
+                        data['task'] += 1;
+                    }
+                });
+            });
+
             this.chartData = {
                 columns: ['date', 'task'],
-                rows: [
-                    { 'date': '1/1', 'task': 10 },
-                    { 'date': '1/2', 'task': 5 },
-                    { 'date': '1/3', 'task': 1 },
-                    { 'date': '1/4', 'task': 0 },
-                    { 'date': '1/5', 'task': 3 },
-                    { 'date': '1/6', 'task': 20 }
-                ]
+                rows: dataGroup
             };
         },
         getChartToday() {
             this.chartTag = this.TAG.TODAY;
+            let date = (this.completedTodayList > 0) ? this.completedTodayList[0].date : new Date();
+            let newDate = this.makeChartData(date);
+
             this.chartData = {
                 columns: ['date', 'task'],
-                rows: [
-                    { 'date': '1/1', 'task': 10 }
-                ]
+                rows: [{
+                    'date': newDate,
+                    'task': this.completedTodayList.length
+                }]
             };
         },
-        changeTagClass(tag_Id) {
-            //TODO: 依據id 設定active啟用
-            console.log(tag_Id);
-        }
+        /**
+         * 轉換時間戳為字串時間
+         * @param {number} date 數字時間戳
+         * @returns {string} Month / Date 格式時間
+         */
+        makeChartData(date) {
+            let newDate = new Date(date);
+
+            return (newDate.getMonth() + 1) + ' / ' + newDate.getDate();
+        },
+
+        /**
+         * 作用中的圖表 tag class
+         * @param {CHART_TAG | number} tag_id 圖表tag Enum
+         * @returns {object} class
+         */
+        activeTagClass(tag_id) {
+            return {
+                'active': (this.chartTag === tag_id)
+            };
+        }        
     },
     created() {
         this.getChartWeek();

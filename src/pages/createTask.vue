@@ -66,7 +66,7 @@ export default {
 
             this.$store.commit('ADD_TASK', task);
             this.$store.commit('DO_TASK', id);
-            this.$router.push('/setTime');
+            this.$router.push('/taskList');
         },
 
         /**

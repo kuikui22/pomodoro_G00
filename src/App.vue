@@ -38,9 +38,11 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   width: 100%;
+  max-width: 640px;
   height: 100vh;
   z-index: 1;
-  background-color: rgba(255, 255, 255, 0);
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0);  
 }
 .body__bg-time {
     width: 100%;

@@ -12,6 +12,10 @@ export default {
         state.taskList.push(task);
     },
     DO_TASK(state, task_id) {
+        if(state.timer) {
+           return; 
+        }
+        
         state.runningTask = task_id;
     },
     SET_INTERVAL(state, intervalFunc) {

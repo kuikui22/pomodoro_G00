@@ -3,20 +3,12 @@
         <section>
             <h3>{{ title }}</h3>
         </section>
-        <div class="px-1">
-            <div class="mt-3">
+        <div class="px-1 mt-3">
+            <b-form-input v-model="taskTitle" placeholder="Title"  required="required"></b-form-input>
+            <b-form-select class="mt-2" v-model="selected" :options="priorityList"></b-form-select>
+            <div class="mt-2">
                 <b-form-datepicker id="example-datepicker" v-model="date" class="mb-2"></b-form-datepicker>                
             </div>
-            <b-form-input v-model="taskTitle" placeholder="Title" required></b-form-input>
-            <b-form-textarea
-                id="textarea"
-                v-model="taskContent"
-                placeholder="Content"
-                rows="3"
-                max-rows="6"
-                class="mt-2"
-            ></b-form-textarea>
-            <b-form-select class="mt-2" v-model="selected" :options="priorityList"></b-form-select>
         </div>
         <button to="setTime" class="btn btn-success add-btn" @click="addTask">
             Done

@@ -56,13 +56,13 @@ export default {
 
         /**
          * 這星期的日期
-         * @todo 目前為顯示後7天的日期及星期, 
-         *       之後須改成顯示這一個星期 S ~ S
          */
         getWeeks() {            
             this.monthList = [];
             let date = new Date();
             let newDate = new Date();
+            let resetDay = date.getDay();
+            date.setDate(date.getDate() - resetDay);
 
             for(let i = 0; i < 7; i++) {   
                 newDate.setDate(date.getDate() + i);

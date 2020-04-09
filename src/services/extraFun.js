@@ -1,11 +1,11 @@
 const DAY_SHORT_NAME = {
-    0: 'M',
-    1: 'T',
-    2: 'W',
-    3: 'T',
-    4: 'F',
-    5: 'S',
-    6: 'S',
+    0: 'S',
+    1: 'M',
+    2: 'T',
+    3: 'W',
+    4: 'T',
+    5: 'F',
+    6: 'S'
 }
 
 const MONTH_SHORT_NAME = {

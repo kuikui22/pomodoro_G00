@@ -16,6 +16,8 @@
     </div>
 </template>
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
     data() {
         return {
@@ -31,6 +33,7 @@ export default {
         }
     },
     methods: {
+        ...mapGetters(['taskList']),
 
         /**
          * 新增任務
@@ -38,6 +41,7 @@ export default {
          */
         addTask() {
             let task = {
+                id: this.taskList.length,
                 finish: false,
                 name: this.taskTitle,
                 date: this.date || new Date(),

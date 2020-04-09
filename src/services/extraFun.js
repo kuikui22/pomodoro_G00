@@ -81,6 +81,7 @@ export const getDefaultTaskList = () => {
 
     for(let i = 0; i < 7; i++) {
         taskList.push({
+            id: i,
             finish: false, 
             name: 'Work on Project '+(i + 1), 
             date: weekList[i], 

@@ -160,13 +160,14 @@ section {
         color: #8acf9c;
     }
 }
-.task-list-item {
+.task-list-item,
+.task-list-move {
     transition: all .5s ease;
 }
 .task-list-enter,
 .task-list-leave-to {
     opacity: 0;
-    transform: translateY(100px);
+    transform: translateX(50%);
 }
 .task-list-leave-active {
     width: 100%;

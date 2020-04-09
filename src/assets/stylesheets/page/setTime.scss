@@ -14,7 +14,7 @@
     // width: 150pt;
     // height: 150pt;
     background: url('~@/assets/images/trans-am2.png') no-repeat center;
-    background-size: cover;
+    background-size: contain;
     width: 100%;
     height: 46vh;
     display: flex;
@@ -43,5 +43,61 @@
         @include border-radius(40pt);
 
         width: 60pt;
+    }
+}
+
+/**
+ *  上下左右移動的方格
+ */
+.box__l {
+    top: 0;
+    right: 21%;
+    animation: xl_move 5s linear infinite alternate-reverse;
+}
+.box__r {
+    bottom: 0;
+    left: 21%;
+    animation: xr_move 5s linear infinite alternate-reverse;
+}
+.move__box {
+    display: block;
+    width: 4px;
+    height: 10px;
+    position: absolute;
+    background-color: black;
+}
+@keyframes xl_move {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-60vw);
+    }
+}
+@keyframes xr_move {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(60vw);
+    }
+}
+
+
+.rotate__box {
+    display: block;
+    border-top: solid 10px red;
+    border-bottom: solid 10px red;
+    width: 4px;
+    height: 90%;
+    position: absolute;
+    animation: rotate_move 5s linear infinite;
+}
+@keyframes rotate_move {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(90deg);
     }
 }

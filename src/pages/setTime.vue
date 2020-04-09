@@ -4,6 +4,9 @@
             <h3>{{ title }}</h3>
         </section>
         <div class="timer__box">
+            <span class="move__box box__l"></span>
+            <span class="move__box box__r"></span>
+            <span class="rotate__box"></span>
             <p>{{ cutdown | minuteTime }}</p>
         </div>
         <div class="block__reps my-3">

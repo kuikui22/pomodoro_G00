@@ -42,16 +42,9 @@ echarts文檔: https://www.echartsjs.com/zh/option.html#textStyle.color
 
 
 # <font color="#ff0000"> TODO </font>
-* 任務列表
-    * 上方日期顯示
-    * 點選任務箭頭時跳至時間計時頁
-* 新增任務
-    * 防止空值
-    * 空值提示
-* 任務圖表
 * 鈴聲提示
 * 倒數計時動畫
-* 倒數計時頁面
+* 任務刪除須以id刪除
 
 
 ## Project setup

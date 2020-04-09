@@ -10,7 +10,9 @@ export default {
     },
     ADD_TASK(state, task) {
         state.taskList.push(task);
-        console.log(state.taskList);
+    },
+    DO_TASK(state, task_id) {
+        state.runningTask = task_id;
     },
     SET_INTERVAL(state, intervalFunc) {
         state.timer = intervalFunc;
@@ -31,6 +33,12 @@ export default {
             state.timer = null;
             state.cutdown = 0;
             state.showTimesUp = true;
+
+            if(state.runningTask !== null) {
+                let task = state.taskList.find(task => state.runningTask === task.id);
+                task.finish = true;
+                state.runningTask = null;
+            }
         }
     },
     TIME_STOP(state) {

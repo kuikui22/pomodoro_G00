@@ -34,14 +34,20 @@ import { DEFAULT_TIME } from '@/services/const.js';
 export default {
     data() {
         return {
-            title: 'Set Time',
             img: require('@/assets/images/trans-am1.png'),
             TaskStatus: 'Start',
             value: 5            
         };
     },
     computed: {
-        ...mapGetters(['cutdown', 'hasTimer'])
+        ...mapGetters(['cutdown', 'hasTimer', 'runningTask', 'taskList']),
+        title() {
+            if(!this.runningTask) {
+                return 'Set Time';
+            }
+
+            return this.changeTitle(this.runningTask);
+        }
     },
     filters: {
         minuteTime(seconds) {
@@ -70,6 +76,10 @@ export default {
         },
         clearTime() {
             this.$store.commit('TIME_CLEAR');
+        },
+        changeTitle(title_id) {
+            let task = this.taskList.find(task => task.id === title_id);
+            return task.name;
         }
     }
 }

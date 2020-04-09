@@ -19,7 +19,7 @@
                         <b-icon-check v-show="item.finish"></b-icon-check>
                     </span>
                     <span class="task-name">{{ item.name }}</span>
-                    <span class="arrow-btn" v-show="!item.finish">
+                    <span class="arrow-btn" v-show="!item.finish" @click="doTask(item.id)">
                         <b-icon-play-fill></b-icon-play-fill>
                     </span>
                     <span class="task__btn-del" @click="delTask(key)">
@@ -148,6 +148,10 @@ export default {
                 return;
 
             this.$store.commit('CHANGE_STATUS_TASK', id);
+        },
+        doTask(id) {
+            this.$store.commit('DO_TASK', id);
+            this.$router.push('/setTime');
         }
     },
     created() {

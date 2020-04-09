@@ -12,7 +12,8 @@ const state = {
 	defaultTime: DEFAULT_TIME,
 	cutdown: 0,
 	firstCutDown: true,
-	taskList: getDefaultTaskList()
+	taskList: getDefaultTaskList(),
+	runningTask: null,
 };
 
 const getters = {
@@ -20,7 +21,8 @@ const getters = {
 	taskList: state => state.taskList,
 	cutdown: state => state.cutdown,
 	hasTimer: state => (state.timer) ? true : false,
-	firstCutDown: state => state.firstCutDown
+	firstCutDown: state => state.firstCutDown,
+	runningTask: state => state.runningTask
 };  //state.[value] 取出 (類computed)
 
 const actions = {

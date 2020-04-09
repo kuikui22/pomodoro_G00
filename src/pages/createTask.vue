@@ -55,8 +55,9 @@ export default {
                 this.alertMsg(false);
             }
 
+            let id = this.taskList.length;
             let task = {
-                id: this.taskList.length,
+                id: id,
                 finish: false,
                 name: this.taskTitle,
                 date: this.date || new Date(),
@@ -64,6 +65,7 @@ export default {
             }
 
             this.$store.commit('ADD_TASK', task);
+            this.$store.commit('DO_TASK', id);
             this.$router.push('/setTime');
         },
 

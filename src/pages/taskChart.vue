@@ -130,6 +130,7 @@ export default {
         }        
     },
     created() {
+        this.titleContent = `You completed your goal ${this.completedTaskList.length} tasks !`,
         this.getChartWeek();
     }
 }

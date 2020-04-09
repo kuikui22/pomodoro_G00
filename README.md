@@ -44,7 +44,6 @@ echarts文檔: https://www.echartsjs.com/zh/option.html#textStyle.color
 # <font color="#ff0000"> TODO </font>
 * 鈴聲提示
 * 倒數計時動畫
-* 任務刪除須以id刪除
 
 
 ## Project setup

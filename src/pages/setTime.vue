@@ -42,7 +42,7 @@ export default {
     computed: {
         ...mapGetters(['cutdown', 'hasTimer', 'runningTask', 'taskList']),
         title() {
-            if(!this.runningTask) {
+            if(this.runningTask === null) {
                 return 'Set Time';
             }
 

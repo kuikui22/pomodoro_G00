@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import mutations from './mutations.js';
 import { DEFAULT_TIME } from '@/services/const.js';
+import { getDefaultTaskList } from '@/services/extraFun.js';
 
 Vue.use(Vuex);
 
@@ -11,13 +12,7 @@ const state = {
 	defaultTime: DEFAULT_TIME,
 	cutdown: 0,
 	firstCutDown: true,
-	taskList: [
-		{ finish: true, name: 'Work on Project A', date: new Date(), priority: 'normal'},
-		{ finish: false, name: 'Work on Project B', date: new Date(), priority: 'normal' },
-		{ finish: false, name: 'Work on Project C', date: new Date(), priority: 'important' },
-		{ finish: false, name: 'Work on Project D', date: new Date(), priority: 'normal' },
-		{ finish: false, name: 'Work on Project E', date: new Date(), priority: 'normal'},
-	]
+	taskList: getDefaultTaskList()
 };
 
 const getters = {

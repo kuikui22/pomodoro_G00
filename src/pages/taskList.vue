@@ -6,14 +6,14 @@
         </section>
         <div class="main-nav">
             <b-nav fill align="center">                
-                <b-nav-item v-for="(item, key) in monthList" :key="key" :class="dateActiveClass(item.date)">
+                <b-nav-item v-for="(item, key) in weekList" :key="key" :class="dateActiveClass(item.date)">
                     <span class="title-week">{{ item.week }}</span>
                     <span class="title-date">{{ item.date }}</span>
                 </b-nav-item>
             </b-nav>
         </div>
         <transition-group tag="div" class="content position-relative" name="task-list">
-            <div class="card task-list-item" v-for="(item, key) in taskList" :key="key" :class="moveClass(key)">
+            <div class="card task-list-item" v-for="(item, key) in newList" :key="key" :class="moveClass(key)">
                 <div class="card-body" :class="{'finish':item.finish}" @click.stop="showDelete(key)">
                     <span class="finish-check" @click.stop="finishTask(key)">
                         <b-icon-check v-show="item.finish"></b-icon-check>
@@ -34,7 +34,7 @@
     </div>
 </template>
 <script>
-import { getMonth_En, getDay_En } from '@/services/extraFun.js';
+import { getMonth_En, getDay_En, getWeekDate } from '@/services/extraFun.js';
 import { mapGetters } from 'vuex';
 
 export default {
@@ -42,12 +42,25 @@ export default {
         return {
             title: 'Task',
             month: '',
-            monthList: [],
-            movingTask: null
+            weekList: [],
+            movingTask: null,
+            showTask: null        
         }
     },
     computed: {
-        ...mapGetters(['taskList'])
+        ...mapGetters(['taskList']),
+        newList() {
+            if(this.showTask === null) {
+                return this.taskList;
+            }
+
+            return this.taskList.filter(task => {
+
+                if( task.date === this.weekList[this.showTask].dateParse) {
+                    return task;
+                }
+            });
+        }
     },
     methods: {
         getMonth() {
@@ -57,21 +70,17 @@ export default {
         /**
          * 這星期的日期
          */
-        getWeeks() {            
-            this.monthList = [];
-            let date = new Date();
-            let newDate = new Date();
-            let resetDay = date.getDay();
-            date.setDate(date.getDate() - resetDay);
+        getWeeks() {
 
-            for(let i = 0; i < 7; i++) {   
-                newDate.setDate(date.getDate() + i);
+            this.weekList = getWeekDate(new Date()).map(date_int => {
+                let date = new Date(date_int);
 
-                this.monthList.push({
-                    week: getDay_En(newDate.getDay()),
-                    date: newDate.getDate()
-                });
-            }
+                return {
+                    week: getDay_En(date.getDay()),
+                    date: date.getDate(),
+                    dateParse: date_int
+                };
+            });
         },
 
         /**
@@ -86,6 +95,15 @@ export default {
             return {
                 'active': active
             };
+        },
+
+        /**
+         * @todo 這裡先不實裝此功能, 全部顯示與搜尋顯示需規劃UX
+         * 依照點選的日期顯示任務
+         * @param {number} date_id 點選的tag標籤
+         */
+        searchTask(date_id) {            
+            this.showTask = (date_id === this.showTask) ? null : date_id;
         },
 
         /**

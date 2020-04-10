@@ -45,6 +45,11 @@ echarts文檔: https://www.echartsjs.com/zh/option.html#textStyle.color
 * 鈴聲提示
 * 倒數計時動畫
 
+## 新的學習
+* css 的 transition
+> https://stackoverflow.com/questions/21557476/how-to-use-transformtranslatex-to-move-a-child-element-horizontally-100-across
+> http://jsfiddle.net/Nprs7/
+
 
 ## Project setup
 ```

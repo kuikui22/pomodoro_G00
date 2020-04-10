@@ -2,7 +2,8 @@
 
 #main {
     position: relative;
-    padding-bottom: 55pt;
+    padding-bottom: 50pt;
+    height: 100vh;
 }
 .timer__box {
     // @include border-radius(50%);
@@ -13,10 +14,10 @@
     border: 1px solid #ccc;
     // width: 150pt;
     // height: 150pt;
-    background: url('~@/assets/images/trans-am2.png') no-repeat center;
+    // background: url('~@/assets/images/trans-am2.png') no-repeat center;
     background-size: contain;
     width: 100%;
-    height: 46vh;
+    height: 55%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,6 +25,7 @@
     p {
         // padding-top: 40pt;
         font-size: 20pt;
+        z-index: 2;
     }
 }    
 .block__btns {
@@ -46,32 +48,84 @@
     }
 }
 
+$move__box-color: black;
+
+.trans-am {
+    transition: all .1s ease-in;
+}
+.trans-am-enter,
+.trans-am-leave-to {
+    opacity: 0;
+}
+.trans-am-enter-active,
+.trans-am-leave-active {
+    transition: all .4s ease-in;
+}
+
+/**
+ * 背景變色
+ */
+ .action__box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    background: radial-gradient(circle, rgba(255, 133, 255, .5),rgba(255, 66, 254, .9), rgba(74, 15, 76, .9));
+
+    .logo {
+        background: url('~@/assets/images/logo.png') no-repeat center;
+        background-size: contain;
+        display: block;
+        z-index: 1;
+        width: 50%;
+        height: 50%;
+        margin: 0 auto;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
 /**
  *  上下左右移動的方格
  */
-.box__l {
+.move__box__group {
+    width: 100%;
+    height: 100%;
     top: 0;
-    right: 21%;
+    position: absolute;
+    transition: all 5s;
+}
+.move__box {
+    display: block;
+    width: 1.3%;
+    height: 5%;
+    position: absolute;
+    background-color: $move__box-color;
+}
+.move-r__anim {
+    animation: xr_move 5s linear infinite alternate-reverse;
+}
+.move-l__anim {
     animation: xl_move 5s linear infinite alternate-reverse;
 }
 .box__r {
     bottom: 0;
     left: 21%;
-    animation: xr_move 5s linear infinite alternate-reverse;
 }
-.move__box {
-    display: block;
-    width: 4px;
-    height: 10px;
-    position: absolute;
-    background-color: black;
+.box__l {
+    top: -3px;
+    right: 21%;
 }
+
 @keyframes xl_move {
     0% {
         transform: translateX(0%);
     }
     100% {
-        transform: translateX(-60vw);
+        transform: translateX(-56%);
     }
 }
 @keyframes xr_move {
@@ -79,25 +133,59 @@
         transform: translateX(0%);
     }
     100% {
-        transform: translateX(60vw);
+        transform: translateX(56%);
     }
 }
 
-
+/**
+ * 中間選轉框
+ */
 .rotate__box {
     display: block;
-    border-top: solid 10px red;
-    border-bottom: solid 10px red;
-    width: 4px;
-    height: 90%;
-    position: absolute;
+    border-top: solid 10px $move__box-color;
+    border-bottom: solid 10px $move__box-color;
+    width: 1%;
+    height: 89%;
+    top: 50%;
+    left: 50%;
+    position: absolute;    
+}
+.rotate__box-r {
+    transform: translate(-50%, -50%) rotate(48deg);
+}
+.rotate__box-l {
+    transform: translate(-50%, -50%) rotate(-48deg);
+}
+.rotate__anim {
     animation: rotate_move 5s linear infinite;
 }
+.rotate-reverse__anim {
+    animation: rotate_move 5s linear infinite reverse;
+}
+
 @keyframes rotate_move {
     0% {
-        transform: rotate(0deg);
+        transform: translate(-50%, -50%) rotate(48deg);
     }
     100% {
-        transform: rotate(90deg);
+        transform: translate(-50%, -50%) rotate(228deg);
     }
 }
+
+// /**
+//  * 時間消耗進度條
+//  */
+// .timer-move__box {
+//     @include border-radius(0 100% 100% 100%);
+
+//     display: block;
+//     border: solid 2px green;
+//     border-top: none;
+//     width: 60%;
+//     height: 89%;
+//     top: 50%;
+//     left: 50%;
+//     transform: translate(-50%, -50%);
+//     position: absolute; 
+//     z-index: 2;
+// }

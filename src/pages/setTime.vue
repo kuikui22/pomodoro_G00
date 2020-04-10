@@ -4,12 +4,28 @@
             <h3>{{ title }}</h3>
         </section>
         <div class="timer__box">
-            <span class="move__box box__l"></span>
-            <span class="move__box box__r"></span>
-            <span class="rotate__box"></span>
+            <div class="w-100 position-absolute overflow-hidden">
+                <img :src="img" class="img-fluid" />
+                <transition tag="div" name="trans-am">
+                    <div class="w-100 h-100 trans-am" v-show="hasTimer">
+                        <div class="action__box">
+                            <span class="logo"></span>
+                        </div>
+                        <div class="move__box__group move-l__anim">
+                            <span class="move__box box__l move-l__anim"></span>
+                        </div>
+                        <div class="move__box__group move-r__anim">
+                            <span class="move__box box__r move-r__anim"></span>
+                        </div>
+                        <span class="rotate__box rotate__box-r rotate__anim"></span>
+                        <span class="rotate__box rotate__box-l rotate-reverse__anim"></span>
+                        <div class="timer-move__box"></div>
+                    </div>
+                </transition>
+            </div>
             <p>{{ cutdown | minuteTime }}</p>
         </div>
-        <div class="block__reps my-3">
+        <div class="block__reps my-2">
             <b-form-spinbutton id="sb-inline" min="1" max="25" v-model="value" inline></b-form-spinbutton>
         </div>
         <b-row class="block__btns">
@@ -37,7 +53,7 @@ import { DEFAULT_TIME } from '@/services/const.js';
 export default {
     data() {
         return {
-            img: require('@/assets/images/trans-am1.png'),
+            img: require('@/assets/images/tran-am2.png'),
             TaskStatus: 'Start',
             value: 5            
         };

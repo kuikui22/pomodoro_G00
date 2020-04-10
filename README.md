@@ -45,9 +45,6 @@ echarts文檔: https://www.echartsjs.com/zh/option.html#textStyle.color
 * 鈴聲提示
 * 倒數計時動畫
 * 圖表model用案需導入
-* 禁止使用者勾選完成任務
-* 使用者建立新任務時只能建立這個星期且 >= 今日
-* 新建任務的日期預設今天
 
 ## 新的學習
 * css 的 transition

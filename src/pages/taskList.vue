@@ -15,7 +15,7 @@
         <transition-group tag="div" class="content" name="task-list">
             <div class="card task-list-item" v-for="(item, key) in newList" :key="item.id" :class="moveClass(key)">
                 <div class="card-body" :class="{'finish':item.finish}" @click.stop="showDelete(key)">
-                    <span class="finish-check" @click.stop="finishTask(key)">
+                    <span class="finish-check">
                         <b-icon-check v-show="item.finish"></b-icon-check>
                     </span>
                     <span class="task-name">{{ item.name }}</span>

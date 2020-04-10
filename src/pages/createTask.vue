@@ -30,6 +30,8 @@ export default {
             errMsg: '',
             showMsg: false,
             selected: 'normal',
+            minDate: '',
+            maxDate: '',
             priorityList: [
                 { value: 'normal', text: 'normal'},
                 { value: 'important', text: 'important' }
@@ -92,6 +94,14 @@ export default {
                 this.showMsg = false;
             }            
         }
+    },
+    created() {
+        let date = new Date();
+        let today = new Date(date.getFullYear(), date.getMonth(), date.getDate());   
+        let endDay = 7 - date.getDay(); 
+        this.minDate = new Date(today);
+        this.maxDate = new Date(today);
+        maxDate.setDate(today.getDate() + endDay);
     }
 }
 </script>

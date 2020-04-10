@@ -7,7 +7,7 @@
             <b-form-input v-model="taskTitle" placeholder="Title"  required="required"></b-form-input>
             <b-form-select class="mt-2" v-model="selected" :options="priorityList"></b-form-select>
             <div class="mt-2">
-                <b-form-datepicker id="example-datepicker" v-model="date" class="mb-2"></b-form-datepicker>                
+                <b-form-datepicker id="example-datepicker" v-model="date" :min="minDate" :max="maxDate" class="mb-2"></b-form-datepicker>                
             </div>
         </div>
         <button to="setTime" class="btn btn-success add-btn" @click="addTask">
@@ -99,9 +99,10 @@ export default {
         let date = new Date();
         let today = new Date(date.getFullYear(), date.getMonth(), date.getDate());   
         let endDay = 7 - date.getDay(); 
+        this.date = today;
         this.minDate = new Date(today);
         this.maxDate = new Date(today);
-        maxDate.setDate(today.getDate() + endDay);
+        this.maxDate.setDate(today.getDate() + endDay);
     }
 }
 </script>

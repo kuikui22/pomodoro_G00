@@ -10,10 +10,11 @@ const state = {
 	showTimesUp: false,
 	timer: null,
 	defaultTime: DEFAULT_TIME,
+	beStartTime: 0,
 	cutdown: 0,
 	firstCutDown: true,
 	taskList: getDefaultTaskList(),
-	runningTask: null,
+	runningTask: null,	
 };
 
 const getters = {
@@ -22,7 +23,8 @@ const getters = {
 	cutdown: state => state.cutdown,
 	hasTimer: state => (state.timer) ? true : false,
 	firstCutDown: state => state.firstCutDown,
-	runningTask: state => state.runningTask
+	runningTask: state => state.runningTask,
+	beStartTime: state => state.beStartTime,
 };  //state.[value] 取出 (類computed)
 
 const actions = {

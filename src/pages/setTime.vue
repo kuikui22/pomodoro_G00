@@ -19,7 +19,12 @@
                         </div>
                         <span class="rotate__box rotate__box-r rotate__anim"></span>
                         <span class="rotate__box rotate__box-l rotate-reverse__anim"></span>
-                        <div class="timer-move__box"></div>
+                        <div class="circle__side circle__top">
+                            <div class="circle__content circle__content-top" :style="progress"></div>
+                        </div>
+                        <div class="circle__side circle__bottom">
+                            <div class="circle__content circle__content-bottom" :style="progress"></div>
+                        </div>
                     </div>
                 </transition>
             </div>
@@ -59,13 +64,21 @@ export default {
         };
     },
     computed: {
-        ...mapGetters(['cutdown', 'hasTimer', 'runningTask', 'taskList']),
+        ...mapGetters(['cutdown', 'hasTimer', 'runningTask', 'taskList', 'beStartTime']),
         title() {
             if(this.runningTask === null) {
                 return 'Set Time';
             }
 
             return this.changeTitle(this.runningTask);
+        },
+        progress() {
+            let parsent = Math.floor((this.beStartTime / this.cutdown) * 100) / 100;
+            let deg = Math.floor(152 / parsent);
+
+            return {
+                'transform': 'rotate('+(-1 * (152 - deg))+'deg)'
+            };
         }
     },
     filters: {

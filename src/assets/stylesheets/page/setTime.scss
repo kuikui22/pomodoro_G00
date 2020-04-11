@@ -172,20 +172,59 @@ $move__box-color: black;
     }
 }
 
-// /**
-//  * 時間消耗進度條
-//  */
-// .timer-move__box {
-//     @include border-radius(0 100% 100% 100%);
+/**
+ * 時間消耗進度條
+ */
+$border-width: 20px;
+$border-color: rgba(255, 255, 255, .7);
+$bottom-clip: inset(0px 0px 62% 0px round 0px 0px 0px 0px);
+$top-clip: inset(62% 0px 0px 0px round 0px 0px 0px 0px);
 
-//     display: block;
-//     border: solid 2px green;
-//     border-top: none;
-//     width: 60%;
-//     height: 89%;
-//     top: 50%;
-//     left: 50%;
-//     transform: translate(-50%, -50%);
-//     position: absolute; 
-//     z-index: 2;
-// }
+@mixin circle__box {
+    @include border-radius(50%);
+
+    display: block;
+    position: absolute; 
+    z-index: 2;
+}
+
+.circle__side {
+    @include circle__box;
+
+    width: 60%;
+    height: 89%;
+    top: 50%;
+    left: 50%;
+    background: transparent;
+}
+.circle__content {
+    @include circle__box;
+
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transition: all .1s ease-in-out;
+}
+.circle__content-top {
+    border: solid 20px transparent;
+    border-top: solid $border-width $border-color;
+    border-right: solid $border-width $border-color;
+    border-left: solid $border-width $border-color;
+    clip-path: $bottom-clip;
+}
+.circle__content-bottom {
+    border: solid 20px transparent;
+    border-bottom: solid $border-width $border-color;
+    border-right: solid $border-width $border-color;
+    border-left: solid $border-width $border-color;
+    clip-path: $top-clip;
+}
+.circle__top {
+    transform: translate(-50%, -50%);
+    clip-path: $bottom-clip;
+}
+.circle__bottom {
+    transform: translate(-50%, -50%);
+    clip-path: $top-clip;
+}

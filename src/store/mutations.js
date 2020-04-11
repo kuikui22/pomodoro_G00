@@ -26,6 +26,7 @@ export default {
         
         if(state.cutdown <= 0) {
             state.cutdown = time;
+            state.beStartTime = time;
         }
         
         if(state.cutdown > 0 && state.firstCutDown === true) {

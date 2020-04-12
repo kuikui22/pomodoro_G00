@@ -4,7 +4,7 @@
             <h3>{{ title }}</h3>
         </section>
         <div class="timer__box">
-            <div class="w-100 position-absolute overflow-hidden">
+            <div class="w-100 position-absolute overflow-hidden top-0">
                 <img :src="img" class="img-fluid" />
                 <transition tag="div" name="trans-am">
                     <div class="w-100 h-100 trans-am" v-show="hasTimer">
@@ -26,14 +26,9 @@
                             <div class="circle__content circle__content-bottom" :style="progress"></div>
                         </div>
                         <div class="font-box">
-                            <span>T</span>
-                            <span>R</span>
-                            <span>A</span>
-                            <span>N</span>
-                            <span>S</span>
-                            <span>-</span>
-                            <span>A</span>
-                            <span>M</span>
+                            <span v-for="(item, index) in aniFont" :key="index">
+                                {{item}}
+                            </span>
                         </div>
                     </div>
                 </transition>
@@ -43,7 +38,7 @@
         <div class="block__reps my-2">
             <b-form-spinbutton id="sb-inline" min="1" max="25" v-model="value" inline></b-form-spinbutton>
         </div>
-        <b-row class="block__btns">
+        <b-row class="block__btns mx-0">
             <b-col>
                 <button class="btn" @click="resetTime">
                     <b-icon-arrow-clockwise></b-icon-arrow-clockwise>
@@ -70,7 +65,8 @@ export default {
         return {
             img: require('@/assets/images/tran-am2.png'),
             TaskStatus: 'Start',
-            value: 5            
+            value: 5,
+            aniFont: 'TRANS-AM'           
         };
     },
     computed: {

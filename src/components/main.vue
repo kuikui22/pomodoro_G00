@@ -1,6 +1,6 @@
 <template>
     <main>
-        <transition mode="out-in">
+        <transition>
             <router-view></router-view>
         </transition>
     </main>
@@ -14,12 +14,14 @@
         overflow-y: auto;
     }
     .v-enter {
+        transform: translateX(100%);
         opacity: 0;
-        transform: translateX(50%);
     }
     .v-leave-to {
+        transform: translateX(-100%);  
         opacity: 0;
-        transform: translateX(-50%);
+              
+        position: absolute;
     }
     .v-enter-active,
     .v-leave-active {

@@ -47,7 +47,7 @@ echarts文檔: https://www.echartsjs.com/zh/option.html#textStyle.color
 * 圖表model用案需導入
 * trans-am 空白背景需切圖
 * 時間暫停去開始其他任務時時間部會覆蓋掉
-* trans-am 圖片div網頁版時會跑版
+* 換頁動畫有空白階段(需移除)
 
 ## 新的學習
 * css 的 transition

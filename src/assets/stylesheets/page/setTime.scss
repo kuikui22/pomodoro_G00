@@ -11,7 +11,7 @@
     position: relative;
     // left: 50%;        
     // transform: translateX(-50%);
-    border: 1px solid #ccc;
+    // border: 1px solid #ccc;
     // width: 150pt;
     // height: 150pt;
     // background: url('~@/assets/images/trans-am2.png') no-repeat center;
@@ -23,15 +23,20 @@
     align-items: center;
     
     p {
-        margin-top: 50pt;
+        margin-top: 25%;
         padding: 0 5pt;
         font-size: 20pt;
         font-weight: bold;
         z-index: 2;
-        background-color: rgba(255, 255, 255, .3);
+        background-color: rgba(255, 255, 255, .2);
     }
 }    
 .block__btns {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    bottom: 15%;
 
     button {
         @include border-radius(50%);
@@ -49,6 +54,13 @@
 
         width: 60pt;
     }
+}
+.block__reps {
+    position: absolute;
+    bottom: 24%;
+    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 $move__box-color: black;

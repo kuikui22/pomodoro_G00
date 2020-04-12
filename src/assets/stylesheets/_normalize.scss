@@ -4,17 +4,18 @@ html, body {
     background-color: $body-bg-color;
     font-family: $font-family;
 }
-
 h3, h5 {
     color: $titleColor;
     font-weight: bold;
     font-family: $title-font;
     letter-spacing: 1px;
 }
-
 section {
     h3, h5 {
         text-align: left;
         word-break: break-all;
     }
+}
+.top-0 {
+    top: 0;
 }

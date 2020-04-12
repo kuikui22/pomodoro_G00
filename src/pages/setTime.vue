@@ -25,6 +25,16 @@
                         <div class="circle__side circle__bottom">
                             <div class="circle__content circle__content-bottom" :style="progress"></div>
                         </div>
+                        <div class="font-box">
+                            <span>T</span>
+                            <span>R</span>
+                            <span>A</span>
+                            <span>N</span>
+                            <span>S</span>
+                            <span>-</span>
+                            <span>A</span>
+                            <span>M</span>
+                        </div>
                     </div>
                 </transition>
             </div>

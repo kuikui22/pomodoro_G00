@@ -23,10 +23,12 @@
     align-items: center;
     
     p {
-        padding-top: 40pt;
+        margin-top: 50pt;
+        padding: 0 5pt;
         font-size: 20pt;
         font-weight: bold;
         z-index: 2;
+        background-color: rgba(255, 255, 255, .3);
     }
 }    
 .block__btns {
@@ -60,7 +62,7 @@ $move__box-color: black;
 }
 .trans-am-enter-active,
 .trans-am-leave-active {
-    transition: all .4s ease-in;
+    transition: all .3s ease-out;
 }
 
 /**
@@ -233,11 +235,6 @@ $top-clip: inset(62% 0px 0px 0px round 0px 0px 0px 0px);
 /**
  * tans-am 系統文字
  */
-// @mixin delay-time($baseTime) {
-//     $time: $baseTime + 0.5;
-
-// }
-
 .font-box {
     width: 100%;
     position: absolute;
@@ -247,43 +244,17 @@ $top-clip: inset(62% 0px 0px 0px round 0px 0px 0px 0px);
     z-index: 2;
     font-weight: bold;
     font-size: 18pt;
-    // animation: font-scale .5 ease delay iteration-count direction fill-mode;  
+    color: #2f3542;
     
     span {
         display: inline-block;
         transition: all .2s ease;
         transform: scaleY(0);
     }
-    // @for $i from 1 through 8 {
-    //     span:nth-child(#{$i}) {
-    //         background-color: lighten($base-color, $i * 5%);
-    //         animation: font-scale .2s $i + 0.5s ease 1 forwards;
-    //     }
-    // }
-
-    span:nth-child(1) {
-        animation: font-scale .2s .1s ease 1 forwards;
-    }
-    span:nth-child(2) {
-        animation: font-scale .2s .15s ease 1 forwards;
-    }
-    span:nth-child(3) {
-        animation: font-scale .2s .2s ease 1 forwards;
-    }
-    span:nth-child(4) {
-        animation: font-scale .2s .25s ease 1 forwards;
-    }
-    span:nth-child(5) {
-        animation: font-scale .2s .3s ease 1 forwards;
-    }
-    span:nth-child(6) {
-        animation: font-scale .2s .35s ease 1 forwards;
-    }
-    span:nth-child(7) {
-        animation: font-scale .2s .4s ease 1 forwards;
-    }
-    span:nth-child(8) {
-        animation: font-scale .2s .45s ease 1 forwards;
+    @for $i from 0 through 7 {
+        span:nth-child(#{$i + 1}) {
+            animation: font-scale .2s #{(0.05 * $i) + 0.1s} ease 1 forwards;
+        }
     }
 }
 @keyframes font-scale {

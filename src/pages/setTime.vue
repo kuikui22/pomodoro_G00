@@ -63,7 +63,7 @@ import { DEFAULT_TIME } from '@/services/const.js';
 export default {
     data() {
         return {
-            img: require('@/assets/images/tran-am2.png'),
+            img: require('@/assets/images/trans-am-2.png'),
             TaskStatus: 'Start',
             value: 5,
             aniFont: 'TRANS-AM'           

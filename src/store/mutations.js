@@ -16,6 +16,13 @@ export default {
            return; 
         }
         
+        //新的任務重新開始計時,同一個任務則繼續計時
+        if(state.runningTask !== task_id) {            
+            state.cutdown = 0;
+            state.beStartTime = 0;
+            state.firstCutDown = true;
+        }
+
         state.runningTask = task_id;
     },
     SET_INTERVAL(state, intervalFunc) {

@@ -4,6 +4,7 @@
             <section>
                 <img :src="iconUrl" />
                 <p>{{ title }}</p>
+                <audio id="audio" :src="voice" ref="audio" muted />
             </section>
         </div>
     </transition>
@@ -15,15 +16,27 @@ export default {
     data() {
         return {
             title: 'Times Up!',
-            iconUrl: require('@/assets/images/btn_menu.png')
+            iconUrl: require('@/assets/images/btn_menu.png'),
+            voice: require('@/assets/voice/se_maoudamashii_onepoint30.mp3')
         }
     },
     computed: {
         ...mapGetters(['showTimesUp'])
     },
+    watch: {
+        showTimesUp: function(value) {
+            console.log(this);
+            if(value === true) {
+                this.playAudio();
+            }
+        }
+    },
     methods: {
         close() {
             this.$store.commit('SHOW_TIMES_UP', false);
+        },
+        playAudio() {
+            this.$refs.audio.play();
         }
     }
 }

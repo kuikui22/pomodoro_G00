@@ -17,18 +17,18 @@
                 </p>
             </b-col>
         </b-row>
-        <section class="mt-2">
+        <section class="mt-2 pb-3">
             <h5>{{ chartTitle }}</h5>
             <div class="chart-tag">
                 <span class="mr-2" :class="activeTagClass(TAG.TODAY)" @click="getChartToday">Today</span>
                 <span :class="activeTagClass(TAG.WEEK)" @click="getChartWeek">Weekly</span>
             </div>
-            <ve-histogram 
+            <VeHistogram 
                 :data="chartData"
                 :tooltip-visible="false"
                 :legend-visible="false"
-                :textStyle="chartLabelColor"
-            ></ve-histogram>
+                :textStyle="chartLabelColor">
+            </VeHistogram>
         </section>
     </div>
 </template>

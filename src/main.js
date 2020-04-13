@@ -4,8 +4,7 @@ import VueRouter from 'vue-router';
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
 import routes from '@/router/router.js';
 import store from '@/store/store.js';
-import VCharts from 'v-charts';
-// import { Bar } from 'v-charts/lib/line.common';
+import VeHistogram from 'v-charts/lib/histogram.common';
 
 Vue.config.productionTip = false;
 
@@ -13,8 +12,7 @@ Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
 
-Vue.use(VCharts);
-// Vue.component('v-charts-bar', Bar);
+Vue.component(VeHistogram.name, VeHistogram);
 
 //use vue-router
 Vue.use(VueRouter);

@@ -44,7 +44,6 @@ echarts文檔: https://www.echartsjs.com/zh/option.html#textStyle.color
 # <font color="#ff0000"> TODO </font>
 * 鈴聲提示
 * 倒數計時動畫有bug
-* 圖表model用案需導入
 * trans-am 空白背景需切圖
 * 時間暫停去開始其他任務時時間部會覆蓋掉
 * 換頁動畫有空白階段(需移除)

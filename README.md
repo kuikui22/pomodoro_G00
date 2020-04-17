@@ -1,4 +1,6 @@
 # gundam_pomodoro
+
+* [demo](https://kuikui22.github.io/sideProject_demo/VueJs/pomodoro_G00/index.html)
     
 ## Directory Struct
 ```
